@@ -4,6 +4,9 @@ public class EncryptorTester
 {
     public static void main(String[] args)
     {
+        Encryptor encrypt = new Encryptor(6, 7);
+        System.out.println(encrypt.decryptMessage("Ieeste'nlp,lv le let,lI  o l ib I steh ip \".e hoD  bew-AwersMnhee -yon pVo' kr\"nstnecwmte iheorIsaaoe'etnd vl . aeyI tn   Shdwane gciddtert  h eecbetadha om ocu .akkrs P yv  ey awmrokghehunuaaa oetnpmwl .sa yIA"));
+/*
         // --------------------------------
         // ---- TEST PART A: fillBlock ----
         // --------------------------------
@@ -220,7 +223,7 @@ public class EncryptorTester
       System.out.println("  ACTUAL: " + actualEncrypted5);
     }
 
-/*    
+
     // -------------------------------------
     // ---- TEST PART D: decryptMessage ----
     // -------------------------------------
@@ -334,4 +337,6 @@ public class EncryptorTester
         }
         return true;
     }
+
+
 }

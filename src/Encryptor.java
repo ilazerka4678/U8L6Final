@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Encryptor
 {
     /** A two-dimensional array of single-character strings, instantiated in the constructor */
@@ -46,6 +48,22 @@ public class Encryptor
             }
         }
     }
+    public void fillBlockCol(String str)
+    {
+        int letter = 0;
+            for (int col = 0; col < numCols; col++){
+                for (int row = 0; row < numRows; row++){
+                    if (letter < str.length()){
+                    letterBlock[row][col] = str.charAt(letter) + "";
+                    letter++;
+                }
+                    else {
+                    letterBlock[row][col] = "A";
+                }
+
+            }
+        }
+    }
 
     /** Extracts encrypted string from letterBlock in column-major order.
      *
@@ -85,6 +103,15 @@ public class Encryptor
         }
         return finalMessage;
     }
+    public String blockToString(String[][] arr){
+        String returnString = "";
+        for (int row = 0; row < arr.length; row++){
+            for (int col = 0; col < arr[0].length; col++){
+                returnString+= arr[row][col];
+            }
+        }
+        return returnString;
+    }
 
 
     /**  Decrypts an encrypted message. All filler 'A's that may have been
@@ -111,6 +138,27 @@ public class Encryptor
      */
     public String decryptMessage(String encryptedMessage)
     {
-        return null;
+        String finalMessage = "";
+        int startIndex = 0;
+        int key = numCols * numRows;
+        for (int i = 0; i < encryptedMessage.length()/key; i++){
+            fillBlockCol(encryptedMessage.substring(startIndex, startIndex + key));
+            startIndex+= key;
+            finalMessage += blockToString(letterBlock);
+        }
+        if (encryptedMessage.length() % key > 0){
+            fillBlock(encryptedMessage.substring(startIndex, startIndex + (encryptedMessage.length() % key)));
+            finalMessage += blockToString(letterBlock);
+        }
+        String checkString = "A";
+        int c = finalMessage.length()-1;
+        while (checkString.equals("A")){
+            checkString = finalMessage.charAt(c) + "";
+            if (checkString.equals("A")){
+                finalMessage = finalMessage.substring(0, c);
+            }
+            c--;
+        }
+        return finalMessage;
     }
 }
