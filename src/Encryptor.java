@@ -161,4 +161,18 @@ public class Encryptor
         }
         return finalMessage;
     }
+    public String superEncryptMessage(String message, int shift){
+        String messageShifted = "";
+        for (char c : message.toCharArray()){
+            messageShifted+= (char)(c + shift);
+        }
+        return encryptMessage(messageShifted);
+    }
+    public String superDecryptMessage(String message, int shift){
+        String origMessage = "";
+        for (char c : decryptMessage(message).toCharArray()){
+            origMessage += (char)(c - shift);
+        }
+        return origMessage;
+    }
 }

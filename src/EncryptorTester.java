@@ -1,12 +1,26 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class EncryptorTester
 {
     public static void main(String[] args)
     {
-        Encryptor encrypt = new Encryptor(6, 7);
-        System.out.println(encrypt.decryptMessage("Ieeste'nlp,lv le let,lI  o l ib I steh ip \".e hoD  bew-AwersMnhee -yon pVo' kr\"nstnecwmte iheorIsaaoe'etnd vl . aeyI tn   Shdwane gciddtert  h eecbetadha om ocu .akkrs P yv  ey awmrokghehunuaaa oetnpmwl .sa yIA"));
-/*
+        Scanner s = new Scanner(System.in);
+        System.out.print("Message: ");
+        String msg = s.nextLine();
+        System.out.print("Rows: ");
+        int r = s.nextInt();
+        System.out.print("Cols: ");
+        int c = s.nextInt();
+        Encryptor encrypt = new Encryptor(r, c);
+        System.out.print("0 for encryption, 1 for decryption: ");
+        int choice = s.nextInt();
+        if (choice == 1) {
+            System.out.println(encrypt.decryptMessage(msg));
+        }
+        else if (choice == 0) {
+            System.out.println(encrypt.encryptMessage(msg));
+        }/*
         // --------------------------------
         // ---- TEST PART A: fillBlock ----
         // --------------------------------
@@ -297,7 +311,8 @@ public class EncryptorTester
       System.out.println("  ACTUAL: " + actualDecrypted6);
     }
 */
-    }
+        }
+
 
     public static void print2DArray(String[][] arr)
     {
